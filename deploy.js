@@ -14,19 +14,19 @@ let kittyId = 1;
 // blocking us from loading their assets if they don't like our zombie game ;)
 let apiUrl = "https://api.cryptokitties.co/kitties/" + kittyId
 $.get(apiUrl, function(data) {
-  let imgUrl = data.image_url
-  // do something to display the image
+    let imgUrl = data.image_url
+    // do something to display the image
 })
 
 // When the user clicks on a kitty:
 $(".kittyImage").click(function(e) {
-  // Call our contract's `feedOnKitty` method
-  ZombieFeeding.feedOnKitty(zombieId, kittyId)
+    // Call our contract's `feedOnKitty` method
+    ZombieFeeding.feedOnKitty(zombieId, kittyId)
 })
 
 // Listen for a NewZombie event from our contract so we can display it:
 ZombieFactory.NewZombie(function(error, result) {
-  if (error) return
-  // This function will display the zombie, like in lesson 1:
-  generateZombie(result.zombieId, result.name, result.dna)
+    if (error) return
+    // This function will display the zombie, like in lesson 1:
+    generateZombie(result.zombieId, result.name, result.dna)
 })
