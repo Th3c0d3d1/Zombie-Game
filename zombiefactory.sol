@@ -1,8 +1,12 @@
 pragma solidity >=0.5.0 <0.6.0;
 
 import "./ownable.sol";
+import "./safemath.sol";
 
 contract ZombieFactory is Ownable {
+
+    // Using SafeMath to prevent overflows and underflows
+    using SafeMath for uint256;
 
     // Event declaration for creating a new zombie
     event NewZombie(uint zombieId, string name, uint dna);
@@ -12,6 +16,9 @@ contract ZombieFactory is Ownable {
 
     // Variable to calculate the modulus for DNA to ensure it's within a specific range
     uint dnaModulus = 10 ** dnaDigits;
+
+    // Variable to store the cooldown time for a zombie
+    uint cooldownTime = 1 days;
 
     // Struct definition for a Zombie
     struct Zombie {
