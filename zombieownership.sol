@@ -31,7 +31,7 @@ contract ZombieOwnership is ZombieAttack, ERC721 {
     // Function to transfer a zombie from one address to another
     function _transfer(address _from, address _to, uint256 _tokenId) private {
 
-        // Increases the zombie count for the new owner and decreases for the old owner
+        // Increases the zombie count for the new owner and decreases for the old owner using SafeMath
         ownerZombieCount[_to] = ownerZombieCount[_to].add(1);
         ownerZombieCount[_from] = ownerZombieCount[_from].sub(1);
 
