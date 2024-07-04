@@ -1,12 +1,15 @@
 pragma solidity >=0.5.0 <0.6.0;
 
 import "./zombieattack.sol";
+import "./safemath.sol";
 
 // Imports the ERC721 contract interface for NFT functionality
 import "./erc721.sol";
 
 // Declare ERC721 inheritance here
 contract ZombieOwnership is ZombieAttack, ERC721 {
+
+    using SafeMath for uint256;
 
     // Maps the zombie ID to the approved address
     mapping (uint => address) zombieApprovals;
@@ -29,8 +32,8 @@ contract ZombieOwnership is ZombieAttack, ERC721 {
     function _transfer(address _from, address _to, uint256 _tokenId) private {
 
         // Increases the zombie count for the new owner and decreases for the old owner
-        ownerZombieCount[_to]++;
-        ownerZombieCount[_from]--;
+        ownerZombieCount[_to] = ownerZombieCount[_to].add(1);
+        ownerZombieCount[_from] = ownerZombieCount[_from].sub(1);
 
         // Transfers the zombie to the new owner
         zombieToOwner[_tokenId] = _to;
