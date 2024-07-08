@@ -46,7 +46,7 @@ contract ZombieHelper is ZombieFeeding {
         // Requires the sent Ether to be equal to the levelUpFee
         require(msg.value == levelUpFee);
 
-        // Increases the zombie's level by 1
+        // Increases the zombie's level by 1 using safemath
         zombies[_zombieId].level = zombies[_zombieId].level.add(1);
     }
 

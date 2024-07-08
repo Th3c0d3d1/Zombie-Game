@@ -6,6 +6,12 @@ import "./safemath.sol";
 // Imports the ERC721 contract interface for NFT functionality
 import "./erc721.sol";
 
+
+/// @title A contract for basic math operations
+/// @author Bittradeguy007 💯💯😎💯💯
+/// @notice For now, this contract deals with ownership
+/// @dev All aspects of ownership handling are covered
+
 // Declare ERC721 inheritance here
 contract ZombieOwnership is ZombieAttack, ERC721 {
 
